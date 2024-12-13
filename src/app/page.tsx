@@ -9,8 +9,26 @@ export default function Home() {
   };
   return (
     <section>
-      <div className="absolute top-[29px] left-8">
+      <div className="absolute top-[29px] px-8 flex items-center justify-between w-full gap-8">
         <Image src="/apple-watch-logo.png" alt="WATCH" width={90} height={0} />
+        <button
+          className={`text-[17px] tracking-tight leading-6 ${
+            startFlow
+              ? "opacity-100 visible transition-opacity duration-[500ms] ease-in-out delay-300"
+              : "opacity-0 invisible"
+          }`}
+        >
+          Collections
+        </button>
+        <button
+          className={`bg-primary py-2 px-[22px] min-w-[70px] text-[17px] tracking-tight rounded-full text-white hover:bg-primaryhover ${
+            startFlow
+              ? "opacity-100 visible transition-opacity duration-[500ms] ease-in-out delay-300"
+              : "opacity-0 invisible"
+          } `}
+        >
+          Save
+        </button>
       </div>
       <section className="h-[70vh] flex justify-center items-center flex-col text-left">
         <div
