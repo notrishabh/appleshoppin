@@ -11,6 +11,19 @@ export default {
       colors: {
         background: "var(--background)",
         foreground: "var(--foreground)",
+        primary: "var(--primary)",
+        primaryhover: "var(--primary-hover)",
+      },
+      fontSize: {
+        subtitle: "21px",
+        heading: "64px",
+      },
+      letterSpacing: {
+        tighter: "-0.011em",
+        tighest: "-0.009em",
+      },
+      lineHeight: {
+        none: "1.0625",
       },
     },
   },

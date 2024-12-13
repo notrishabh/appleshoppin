@@ -5,6 +5,9 @@
 :root {
   --background: #ffffff;
   --foreground: #1d1d1f;
+
+  --primary: #0071e3;
+  --primary-hover: #0076df;
 }
 
 body {
