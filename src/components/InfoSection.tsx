@@ -1,22 +1,19 @@
-export default function InfoSection({
-  showSideView,
-  setShowSideView,
-}: {
-  showSideView: boolean;
-  setShowSideView: (value: boolean) => void;
-}) {
+import useWatchStore from "@/lib/store";
+
+export default function InfoSection() {
+  const { showSideView, toggleSideView } = useWatchStore();
   return (
     <div className="w-[60%] mx-auto text-center pt-[4vh] flex flex-col gap-2">
       {showSideView ? (
         <span
-          onClick={() => setShowSideView(false)}
+          onClick={() => toggleSideView(false)}
           className="underline cursor-pointer text-primary text-xs tracking-tighter"
         >
           Front view
         </span>
       ) : (
         <span
-          onClick={() => setShowSideView(true)}
+          onClick={() => toggleSideView(true)}
           className="underline cursor-pointer text-primary text-xs tracking-tighter"
         >
           Side view

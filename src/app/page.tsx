@@ -1,12 +1,14 @@
 "use client";
 import InfoSection from "@/components/InfoSection";
+import VariantButtonGroup from "@/components/VariantButtonGroup";
+import useWatchStore from "@/lib/store";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
   const [startFlow, setStartFlow] = useState<boolean>(false);
-  const [showSideView, setShowSideView] = useState<boolean>(false);
+  const { showSideView, toggleSideView } = useWatchStore();
 
   const getStarted = () => {
     setStartFlow(true);
@@ -71,7 +73,7 @@ export default function Home() {
               height="0"
               sizes="100vw"
               className="w-[52vh] max-w-[500px] h-auto cursor-pointer"
-              onClick={() => setShowSideView(false)}
+              onClick={() => toggleSideView(false)}
             />
           ) : (
             <>
@@ -100,10 +102,8 @@ export default function Home() {
           startFlow ? "opacity-100 visible " : "opacity-0 invisible"
         }`}
       >
-        <InfoSection
-          showSideView={showSideView}
-          setShowSideView={setShowSideView}
-        />
+        <InfoSection />
+        <VariantButtonGroup />
       </section>
     </section>
   );
