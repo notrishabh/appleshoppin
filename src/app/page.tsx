@@ -1,14 +1,13 @@
 "use client";
 import InfoSection from "@/components/InfoSection";
 import VariantButtonGroup from "@/components/VariantButtonGroup";
-import useWatchStore from "@/lib/store";
+import Watch from "@/components/Watch";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import { useState } from "react";
 
 export default function Home() {
   const [startFlow, setStartFlow] = useState<boolean>(false);
-  const { showSideView, toggleSideView } = useWatchStore();
 
   const getStarted = () => {
     setStartFlow(true);
@@ -35,7 +34,7 @@ export default function Home() {
           Save
         </button>
       </div>
-      <section className="h-[70vh] flex justify-center items-center flex-col text-left">
+      <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left">
         <div
           className={`absolute top-[17%] z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
             startFlow ? "opacity-0" : "opacity-100"
@@ -65,36 +64,7 @@ export default function Home() {
         <div
           className={`transform translate-y-[32rem] scale-[2] mt-48 ${startFlow && "transform-none transition-transform duration-[1200ms] ease-in-out delay-[400ms]"}`}
         >
-          {showSideView ? (
-            <Image
-              src="/main-watch-side-view.jpg"
-              alt="WATCH"
-              width="0"
-              height="0"
-              sizes="100vw"
-              className="w-[52vh] max-w-[500px] h-auto cursor-pointer"
-              onClick={() => toggleSideView(false)}
-            />
-          ) : (
-            <>
-              <Image
-                src="/main-watch-face.png"
-                alt="WATCH"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="absolute w-[52vh] max-w-[500px] h-auto"
-              />
-              <Image
-                src="/main-watch-band.jpg"
-                alt="WATCH"
-                width="0"
-                height="0"
-                sizes="100vw"
-                className="w-[52vh] max-w-[500px] h-auto"
-              />
-            </>
-          )}
+          <Watch />
         </div>
       </section>
       <section
