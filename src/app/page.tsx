@@ -1,39 +1,16 @@
 "use client";
+import Header from "@/components/Header";
 import InfoSection from "@/components/InfoSection";
 import VariantButtonGroup from "@/components/VariantButtonGroup";
 import Watch from "@/components/Watch";
-import { ChevronDown } from "lucide-react";
-import Image from "next/image";
-import { useState } from "react";
+import useWatchStore from "@/lib/store";
 
 export default function Home() {
-  const [startFlow, setStartFlow] = useState<boolean>(false);
-
-  const getStarted = () => {
-    setStartFlow(true);
-  };
+  const { startFlow, setStartFlow } = useWatchStore();
 
   return (
     <section>
-      <div className="absolute top-[29px] px-8 flex items-center justify-between w-full gap-8">
-        <Image src="/apple-watch-logo.png" alt="WATCH" width={90} height={0} />
-        <button
-          className={`text-[17px] tracking-tight leading-6 flex items-center gap-1 ${
-            startFlow ? "opacity-100 visible " : "opacity-0 invisible"
-          }`}
-        >
-          Collections
-          <ChevronDown size={16} />
-        </button>
-        <button
-          className={`bg-primary py-2 px-4 text-sm tracking-tight rounded-full text-white hover:bg-primaryhover 
-            transition-opacity duration-500 ease-in-out delay-[1500ms] ${
-              startFlow ? "opacity-100 visible" : "opacity-0 invisible"
-            } `}
-        >
-          Save
-        </button>
-      </div>
+      <Header />
       <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left">
         <div
           className={`absolute top-[17%] visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
@@ -55,7 +32,7 @@ export default function Home() {
             </span>
           </h1>
           <button
-            onClick={getStarted}
+            onClick={() => setStartFlow(true)}
             className="bg-primary mt-11 py-2 px-[22px] min-w-[70px] text-[17px] tracking-tight rounded-full text-white hover:bg-primaryhover"
           >
             Get started

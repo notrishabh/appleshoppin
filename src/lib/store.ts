@@ -2,6 +2,10 @@ import { create } from "zustand";
 import { Swiper as SwiperCore } from "swiper";
 
 interface WatchStore {
+  //Get started
+  startFlow: boolean;
+  setStartFlow: (arg0: boolean) => void;
+
   // Watch side view state
   showSideView: boolean;
   toggleSideView: (arg0: boolean) => void;
@@ -19,6 +23,8 @@ interface WatchStore {
 }
 
 const useWatchStore = create<WatchStore>((set, get) => ({
+  startFlow: false,
+  setStartFlow: (arg0) => set(() => ({ startFlow: arg0 })),
   showSideView: false,
   toggleSideView: (arg0) => set(() => ({ showSideView: arg0 })),
   selectedCustomizationTypeId: 0,

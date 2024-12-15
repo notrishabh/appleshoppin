@@ -1,21 +1,9 @@
 "use client";
+import { Customization, CustomizationOption } from "@/data/variants";
 import useWatchStore from "@/lib/store";
 import Image from "next/image";
 
-type CustomizationOption = {
-  id: number;
-  name: string;
-  default?: boolean;
-};
-
-export type VariantButtonProps = {
-  id: number;
-  name: string;
-  image: string;
-  options: CustomizationOption[];
-};
-
-export default function VariantButton({ item }: { item: VariantButtonProps }) {
+export default function VariantButton({ item }: { item: Customization }) {
   const {
     selectedCustomizationTypeId,
     setSelectedCustomizationTypeId,

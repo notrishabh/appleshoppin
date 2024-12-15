@@ -11,17 +11,10 @@ import "swiper/css/navigation";
 import "./swiper-styles.css";
 
 import { Navigation, Keyboard } from "swiper/modules";
-import { useRef } from "react";
 import useWatchStore from "@/lib/store";
+import { Options } from "@/data/variants";
 
-export type Slide = {
-  id: number;
-  name: string;
-  image: string;
-  price: number;
-};
-
-export default function SwiperCarousel({ slides }: { slides: Slide[] }) {
+export default function SwiperCarousel({ slides }: { slides: Options[] }) {
   const { setSwiperInstance } = useWatchStore();
 
   return (

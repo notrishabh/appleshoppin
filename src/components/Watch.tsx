@@ -1,10 +1,14 @@
 import useWatchStore from "@/lib/store";
 import Image from "next/image";
-import CaseCarousel from "./CaseCarousel";
+import { getCases } from "@/utils/utils";
+import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
+import { useMemo } from "react";
 
 export default function Watch() {
   const { showSideView, toggleSideView, selectedCustomizationTypeId } =
     useWatchStore();
+
+  const cases = useMemo(() => getCases(), []);
 
   if (showSideView) {
     return (
@@ -22,9 +26,9 @@ export default function Watch() {
 
   return (
     <div className="w-full flex items-center h-full">
-      {selectedCustomizationTypeId > 0 ? (
+      {selectedCustomizationTypeId === 2 ? (
         <div className="absolute left-0 w-full">
-          <CaseCarousel />
+          <SwiperCarousel slides={cases} />
         </div>
       ) : (
         <Image
