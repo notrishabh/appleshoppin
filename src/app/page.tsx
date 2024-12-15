@@ -36,8 +36,8 @@ export default function Home() {
       </div>
       <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left">
         <div
-          className={`absolute top-[17%] z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
-            startFlow ? "opacity-0" : "opacity-100"
+          className={`absolute top-[17%] visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
+            startFlow ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
           <h1 className="flex flex-col">
