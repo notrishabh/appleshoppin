@@ -30,7 +30,7 @@ export default function VariantButtonGroup() {
         },
         {
           id: 2,
-          name: "Silicone",
+          name: "Titanium",
         },
       ],
     },

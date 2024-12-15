@@ -1,6 +1,7 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperCore } from "swiper";
 import Image from "next/image";
 
 // Import Swiper styles
@@ -10,6 +11,8 @@ import "swiper/css/navigation";
 import "./swiper-styles.css";
 
 import { Navigation, Keyboard } from "swiper/modules";
+import { useRef } from "react";
+import useWatchStore from "@/lib/store";
 
 export type Slide = {
   id: number;
@@ -19,9 +22,12 @@ export type Slide = {
 };
 
 export default function SwiperCarousel({ slides }: { slides: Slide[] }) {
+  const { setSwiperInstance } = useWatchStore();
+
   return (
     <div className="h-[51vh]">
       <Swiper
+        onSwiper={setSwiperInstance}
         slidesPerView={6.2}
         centeredSlides={true}
         spaceBetween={0}
