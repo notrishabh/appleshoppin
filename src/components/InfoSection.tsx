@@ -1,7 +1,9 @@
 import useWatchStore from "@/lib/store";
+import { getWatchFullName } from "@/utils/utils";
 
 export default function InfoSection() {
-  const { showSideView, toggleSideView } = useWatchStore();
+  const { showSideView, toggleSideView, selectedVariant } = useWatchStore();
+
   return (
     <div className="w-[60%] mx-auto text-center pt-[4vh] flex flex-col gap-2">
       {showSideView ? (
@@ -23,7 +25,7 @@ export default function InfoSection() {
         Apple Watch Series 10
       </span>
       <span className="font-semibold text-sm tracking-tighter">
-        46mm Jet Black Aluminum Case with Black Solo Loop
+        {getWatchFullName(selectedVariant)}
       </span>
       <span className="text-sm tracking-tighter">From $429</span>
     </div>
