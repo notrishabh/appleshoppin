@@ -1,5 +1,5 @@
 import useWatchStore from "@/lib/store";
-import { getWatchFullName } from "@/utils/utils";
+import { calculatePrice, getWatchFullName } from "@/utils/utils";
 
 export default function InfoSection() {
   const { showSideView, toggleSideView, selectedVariant } = useWatchStore();
@@ -27,7 +27,9 @@ export default function InfoSection() {
       <span className="font-semibold text-sm tracking-tighter">
         {getWatchFullName(selectedVariant)}
       </span>
-      <span className="text-sm tracking-tighter">From $429</span>
+      <span className="text-sm tracking-tighter">
+        From ${calculatePrice(selectedVariant)}
+      </span>
     </div>
   );
 }

@@ -29,8 +29,8 @@ export default function SwiperCarousel({
   } = useWatchStore();
 
   const onSlideChange = (swiper: SwiperCore) => {
-    const x = data[selectedCustomizationTypeId - 1].name;
-    setSelectedVariant(x as keyof Variant, swiper.activeIndex);
+    const typeName = data[selectedCustomizationTypeId - 1].name;
+    setSelectedVariant(typeName as keyof Variant, swiper.activeIndex);
   };
 
   const initialSlide = useMemo(() => {
@@ -40,7 +40,7 @@ export default function SwiperCarousel({
   }, [selectedCustomizationTypeId]);
 
   return (
-    <div className="h-[52vh]">
+    <div className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"}`}>
       <Swiper
         onSwiper={setSwiperInstance}
         slidesPerView={6.2}
@@ -60,6 +60,7 @@ export default function SwiperCarousel({
         {slides.map((slide: CustomizationVariants) => (
           <SwiperSlide key={slide.id}>
             <Image
+              className="swiper-slide-image"
               src={slide.image}
               alt={slide.name}
               width="0"

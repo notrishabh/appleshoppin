@@ -4,6 +4,7 @@ import { getBands, getCases } from "@/utils/utils";
 import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
 import { useMemo } from "react";
 import data from "@/data/variants";
+import SizeCarousel from "./SwiperCarousel/SizeCarousel";
 
 export default function Watch() {
   const {
@@ -38,6 +39,10 @@ export default function Watch() {
     );
   }
 
+  if (selectedCustomizationTypeId === 1) {
+    return <SizeCarousel />;
+  }
+
   return (
     <div className="w-full flex items-center justify-center h-full">
       {selectedCustomizationTypeId === 2 ? (
@@ -51,7 +56,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className="absolute w-[52vh] max-w-[550px] h-auto z-10"
+          className={`absolute ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10`}
         />
       )}
       {selectedCustomizationTypeId === 3 ? (
@@ -65,7 +70,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className="w-[52vh] max-w-[550px] h-auto"
+          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto`}
         />
       )}
     </div>
