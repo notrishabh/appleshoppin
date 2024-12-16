@@ -1,6 +1,6 @@
 "use client";
-import { Customization, CustomizationOption } from "@/data/variants";
-import useWatchStore from "@/lib/store";
+import data, { Customization, CustomizationOption } from "@/data/variants";
+import useWatchStore, { Variant } from "@/lib/store";
 import { findFirstVariant } from "@/utils/utils";
 import Image from "next/image";
 
@@ -8,8 +8,8 @@ export default function VariantButton({ item }: { item: Customization }) {
   const {
     selectedCustomizationTypeId,
     setSelectedCustomizationTypeId,
-    selectedCustomizationId,
     setSelectedCustomizationId,
+    selectedVariant,
     goToSlide,
   } = useWatchStore();
 
@@ -30,6 +30,13 @@ export default function VariantButton({ item }: { item: Customization }) {
     setSelectedCustomizationId(option.id);
   };
 
+  const checkCurrentOption = (option: CustomizationOption): boolean => {
+    const key = item.name as keyof Variant;
+    const variantIndex = selectedVariant[key] || 0;
+    const currentVariant = data[item.id - 1].variants[variantIndex];
+    return option.name === currentVariant.type;
+  };
+
   return (
     <div
       onClick={selectCustomizationType}
@@ -45,7 +52,7 @@ export default function VariantButton({ item }: { item: Customization }) {
       {item.options && selectedCustomizationTypeId === item.id ? (
         item.options.map((option: CustomizationOption) => (
           <span
-            className={`${option.id === selectedCustomizationId && item.id === selectedCustomizationTypeId && "font-semibold"}`}
+            className={`${checkCurrentOption(option) && "font-semibold"}`}
             onClick={() => selectOptionHandler(option)}
             key={option.id}
           >
