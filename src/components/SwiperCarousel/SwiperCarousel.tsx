@@ -1,7 +1,6 @@
 "use client";
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperCore } from "swiper";
 import Image from "next/image";
 
 // Import Swiper styles
@@ -12,13 +11,17 @@ import "./swiper-styles.css";
 
 import { Navigation, Keyboard } from "swiper/modules";
 import useWatchStore from "@/lib/store";
-import { Options } from "@/data/variants";
+import { CustomizationVariants } from "@/data/variants";
 
-export default function SwiperCarousel({ slides }: { slides: Options[] }) {
+export default function SwiperCarousel({
+  slides,
+}: {
+  slides: CustomizationVariants[];
+}) {
   const { setSwiperInstance } = useWatchStore();
 
   return (
-    <div className="h-[51vh]">
+    <div className="h-[52vh]">
       <Swiper
         onSwiper={setSwiperInstance}
         slidesPerView={6.2}
@@ -33,7 +36,7 @@ export default function SwiperCarousel({ slides }: { slides: Options[] }) {
         }}
         slideToClickedSlide={true}
       >
-        {slides.map((slide: Slide) => (
+        {slides.map((slide: CustomizationVariants) => (
           <SwiperSlide key={slide.id}>
             <Image
               src={slide.image}

@@ -134,16 +134,16 @@ const data: Customization[] = [
     variants: [
       {
         id: 1,
-        name: "42mm",
-        type: "42mm",
-        image: "/case/aluminium/face-1.png",
+        name: "Natural Milanese Loop",
+        type: "Stainless Steel",
+        image: "/band/ss-1.jpg",
         price: 299,
       },
       {
         id: 2,
-        name: "46mm",
-        type: "46mm",
-        image: "/case/aluminium/face-1.png",
+        name: "Gold Milanese Loop",
+        type: "Stainless Steel",
+        image: "/band/ss-2.jpg",
         price: 299,
       },
     ],

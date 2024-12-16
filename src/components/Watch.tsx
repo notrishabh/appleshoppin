@@ -1,6 +1,6 @@
 import useWatchStore from "@/lib/store";
 import Image from "next/image";
-import { getCases } from "@/utils/utils";
+import { getBands, getCases } from "@/utils/utils";
 import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
 import { useMemo } from "react";
 
@@ -9,6 +9,7 @@ export default function Watch() {
     useWatchStore();
 
   const cases = useMemo(() => getCases(), []);
+  const bands = useMemo(() => getBands(), []);
 
   if (showSideView) {
     return (
@@ -25,7 +26,7 @@ export default function Watch() {
   }
 
   return (
-    <div className="w-full flex items-center h-full">
+    <div className="w-full flex items-center justify-center h-full">
       {selectedCustomizationTypeId === 2 ? (
         <div className="absolute left-0 w-full">
           <SwiperCarousel slides={cases} />
@@ -37,17 +38,23 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className="absolute w-[52vh] max-w-[500px] h-auto"
+          className="absolute w-[52vh] max-w-[500px] h-auto z-10"
         />
       )}
-      <Image
-        src="/main-watch-band.jpg"
-        alt="WATCH"
-        width="0"
-        height="0"
-        sizes="100vw"
-        className="w-[52vh] max-w-[500px] h-auto"
-      />
+      {selectedCustomizationTypeId === 3 ? (
+        <div className="absolute left-0 w-full">
+          <SwiperCarousel slides={bands} />
+        </div>
+      ) : (
+        <Image
+          src="/main-watch-band.jpg"
+          alt="WATCH"
+          width="0"
+          height="0"
+          sizes="100vw"
+          className="w-[52vh] max-w-[500px] h-auto"
+        />
+      )}
     </div>
   );
 }
