@@ -13,23 +13,17 @@ export default function Home() {
       <Header />
       <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left">
         <div
-          className={`absolute top-[17%] visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
+          className={`absolute top-[17%] ml-10 visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
             startFlow ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
-          <h1 className="flex flex-col">
-            <span className="text-subtitle tracking-tighter leading-snug pb-[10px]">
+          <h1 className="flex flex-col md:text-heading text-4xl font-semibold tracking-tighest">
+            <span className="md:text-subtitle text-lg font-normal tracking-tighter leading-snug pb-[10px]">
               Apple Watch Studio
             </span>
-            <span className="text-heading font-semibold tracking-tighest leading-none">
-              Choose a case.
-            </span>
-            <span className="text-heading font-semibold tracking-tighest leading-none">
-              Pick a band.
-            </span>
-            <span className="text-heading font-semibold tracking-tighest leading-none">
-              Create your own style.
-            </span>
+            <span className="leading-none">Choose a case.</span>
+            <span className="leading-none">Pick a band.</span>
+            <span className="leading-none">Create your own style.</span>
           </h1>
           <button
             onClick={() => setStartFlow(true)}
@@ -39,7 +33,7 @@ export default function Home() {
           </button>
         </div>
         <div
-          className={`transform translate-y-[32rem] scale-[2] mt-48 ${startFlow && "transform-none transition-transform duration-[1200ms] ease-in-out delay-[400ms]"}`}
+          className={`transform translate-y-[50vh] scale-[1.2] md:scale-[2] mt-48  ${startFlow && "transform-none md:transform-none transition-transform duration-[1200ms] ease-in-out delay-[400ms]"}`}
         >
           <Watch />
         </div>
