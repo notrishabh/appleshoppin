@@ -7,7 +7,8 @@ import useWatchStore, { Variant } from "@/lib/store";
 import { Swiper as SwiperCore } from "swiper";
 
 export default function SizeCarousel() {
-  const { selectedVariant, setSelectedVariant } = useWatchStore();
+  const { selectedVariant, setSelectedVariant, setSwiperInstance } =
+    useWatchStore();
 
   const selectedCase = useMemo(() => {
     return data[1].variants[selectedVariant.Case];
@@ -33,7 +34,8 @@ export default function SizeCarousel() {
       <div className="absolute left-0 w-full">
         <div className="h-[52vh]">
           <Swiper
-            slidesPerView={6.2}
+            onSwiper={setSwiperInstance}
+            slidesPerView={1.4}
             centeredSlides={true}
             spaceBetween={0}
             modules={[Navigation, Keyboard]}
@@ -46,6 +48,20 @@ export default function SizeCarousel() {
             initialSlide={initialSlide}
             slideToClickedSlide={true}
             onSlideChange={onSlideChange}
+            breakpoints={{
+              700: {
+                slidesPerView: 2.5,
+              },
+              960: {
+                slidesPerView: 3.5,
+              },
+              1280: {
+                slidesPerView: 4.5,
+              },
+              1600: {
+                slidesPerView: 6,
+              },
+            }}
           >
             <SwiperSlide className="flex items-center justify-center">
               <Image

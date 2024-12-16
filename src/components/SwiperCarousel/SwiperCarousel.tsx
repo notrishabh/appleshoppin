@@ -79,6 +79,7 @@ export default function SwiperCarousel({
               width="0"
               height="0"
               sizes="100vw"
+              loading="lazy"
             />
           </SwiperSlide>
         ))}
