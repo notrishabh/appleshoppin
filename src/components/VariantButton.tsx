@@ -1,6 +1,7 @@
 "use client";
 import { Customization, CustomizationOption } from "@/data/variants";
 import useWatchStore from "@/lib/store";
+import { findFirstVariant } from "@/utils/utils";
 import Image from "next/image";
 
 export default function VariantButton({ item }: { item: Customization }) {
@@ -9,6 +10,7 @@ export default function VariantButton({ item }: { item: Customization }) {
     setSelectedCustomizationTypeId,
     selectedCustomizationId,
     setSelectedCustomizationId,
+    goToSlide,
   } = useWatchStore();
 
   const selectCustomizationType = () => {
@@ -22,6 +24,9 @@ export default function VariantButton({ item }: { item: Customization }) {
   };
 
   const selectOptionHandler = (option: CustomizationOption) => {
+    const firstVariant = findFirstVariant(option.name, item.id);
+    goToSlide(firstVariant.id - 1);
+
     setSelectedCustomizationId(option.id);
   };
 
