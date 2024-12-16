@@ -56,7 +56,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className={`absolute ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10`}
+          className={`absolute pointer-events-none ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10`}
         />
       )}
       {selectedCustomizationTypeId === 3 ? (

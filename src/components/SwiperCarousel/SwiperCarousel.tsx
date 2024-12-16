@@ -43,7 +43,7 @@ export default function SwiperCarousel({
     <div className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"}`}>
       <Swiper
         onSwiper={setSwiperInstance}
-        slidesPerView={1.75}
+        slidesPerView={1.4}
         centeredSlides={true}
         spaceBetween={10}
         modules={[Navigation, Keyboard]}
@@ -57,21 +57,23 @@ export default function SwiperCarousel({
         slideToClickedSlide={true}
         onSlideChange={onSlideChange}
         breakpoints={{
-          640: {
-            slidesPerView: 2,
-          },
-          768: {
+          700: {
             slidesPerView: 2.5,
           },
-          1024: {
-            slidesPerView: 6.2,
+          960: {
+            slidesPerView: 3.5,
+          },
+          1280: {
+            slidesPerView: 4.5,
+          },
+          1600: {
+            slidesPerView: 6,
           },
         }}
       >
         {slides.map((slide: CustomizationVariants) => (
           <SwiperSlide key={slide.id}>
             <Image
-              className="swiper-slide-image"
               src={slide.image}
               alt={slide.name}
               width="0"
