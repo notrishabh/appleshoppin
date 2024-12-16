@@ -25,6 +25,10 @@ export default {
       lineHeight: {
         none: "1.0625",
       },
+      fontFamily: {
+        sftext: ["var(--font-sf-text)", "sans-serif"],
+        sfdisplay: ["var(--font-sf-display)", "sans-serif"],
+      },
     },
   },
   plugins: [],

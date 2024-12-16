@@ -40,7 +40,7 @@ export default function VariantButton({ item }: { item: Customization }) {
   return (
     <div
       onClick={selectCustomizationType}
-      className="flex items-end gap-4 bg-[#e8e8ed] py-3 px-6 rounded-full cursor-pointer"
+      className="flex items-end gap-2 bg-[#e8e8ed] py-3 px-6 rounded-full cursor-pointer"
     >
       <Image
         src={item.image}
@@ -49,19 +49,21 @@ export default function VariantButton({ item }: { item: Customization }) {
         height={0}
         className="h-full w-auto"
       />
-      {item.options && selectedCustomizationTypeId === item.id ? (
-        item.options.map((option: CustomizationOption) => (
-          <span
-            className={`${checkCurrentOption(option) && "font-semibold"}`}
-            onClick={() => selectOptionHandler(option)}
-            key={option.id}
-          >
-            {option.name}
-          </span>
-        ))
-      ) : (
-        <span>{item.name}</span>
-      )}
+      <div className="flex gap-4">
+        {item.options && selectedCustomizationTypeId === item.id ? (
+          item.options.map((option: CustomizationOption) => (
+            <span
+              className={`${checkCurrentOption(option) && "font-semibold"}`}
+              onClick={() => selectOptionHandler(option)}
+              key={option.id}
+            >
+              {option.name}
+            </span>
+          ))
+        ) : (
+          <span>{item.name}</span>
+        )}
+      </div>
     </div>
   );
 }

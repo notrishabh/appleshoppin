@@ -17,7 +17,7 @@ export default function Home() {
             startFlow ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
-          <h1 className="flex flex-col md:text-heading text-4xl font-semibold tracking-tighest">
+          <h1 className="flex flex-col md:text-heading text-4xl font-sfdisplay font-semibold tracking-tighest">
             <span className="md:text-subtitle text-lg font-normal tracking-tighter leading-snug pb-[10px]">
               Apple Watch Studio
             </span>

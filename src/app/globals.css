@@ -13,5 +13,5 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: Helvetica, sans-serif;
+  font-family: sfText, sfDisplay, Helvetica;
 }
