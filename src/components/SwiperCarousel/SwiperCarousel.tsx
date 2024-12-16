@@ -81,6 +81,7 @@ export default function SwiperCarousel({
               sizes="100vw"
               loading="lazy"
             />
+            <div className="swiper-lazy-preloader"></div>
           </SwiperSlide>
         ))}
       </Swiper>
