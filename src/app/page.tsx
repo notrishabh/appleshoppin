@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </section>
       <section
-        className={`transition-opacity duration-500 ease-in-out delay-[1500ms] ${
+        className={`transition-opacity duration-500 ease-in-out delay-[1500ms] pb-10 ${
           startFlow ? "opacity-100 visible " : "opacity-0 invisible"
         }`}
       >
