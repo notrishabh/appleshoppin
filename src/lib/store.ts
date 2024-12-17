@@ -68,6 +68,9 @@ const useWatchStore = create<WatchStore>((set, get) => ({
     set(() => ({
       selectedCollectionId: arg0,
       selectedVariant: defaultVariant.get(arg0),
+      selectedCustomizationTypeId: 0,
+      selectedCustomizationId: 0,
+      showSideView: false,
     })),
 
   // Side view
