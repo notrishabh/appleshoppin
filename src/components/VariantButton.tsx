@@ -13,10 +13,27 @@ export default function VariantButton({ item }: { item: Customization }) {
     selectedVariant,
     goToSlide,
     selectedCollectionId,
+    startFlow,
   } = useWatchStore();
+
+  const data = getSelectedCollectionData(selectedCollectionId);
 
   const [isAnimating, setIsAnimating] = useState(false);
 
+  // Automatic animation on render of variant button group
+  useEffect(() => {
+    if (item.id === 1 && startFlow) {
+      const timer = setTimeout(() => {
+        setIsAnimating(true); // Start animation after 2500ms
+        const resetTimer = setTimeout(() => setIsAnimating(false), 1750); // Reset animation after 1750ms
+        return () => clearTimeout(resetTimer);
+      }, 2500);
+
+      return () => clearTimeout(timer); // Cleanup timer on component unmount
+    }
+  }, [item.id, startFlow]);
+
+  // On click animation after selecting customization
   useEffect(() => {
     if (selectedCustomizationTypeId === item.id) {
       setIsAnimating(true);
@@ -24,8 +41,6 @@ export default function VariantButton({ item }: { item: Customization }) {
       return () => clearTimeout(timer); // Cleanup timer on unmount or type change
     }
   }, [selectedCustomizationTypeId, item.id]);
-
-  const data = getSelectedCollectionData(selectedCollectionId);
 
   const selectCustomizationType = () => {
     if (selectedCustomizationTypeId === item.id) return;
@@ -55,6 +70,26 @@ export default function VariantButton({ item }: { item: Customization }) {
     return option.name === currentVariant.type;
   };
 
+  const animationClass = isAnimating
+    ? item.id === 1
+      ? "animate-expandAndCollapse"
+      : "animate-openoptions"
+    : "";
+
+  const renderOptions = () => {
+    return item.options.map((option: CustomizationOption) => (
+      <li
+        className={`transition-all whitespace-nowrap ${
+          checkCurrentOption(option) ? "font-semibold" : ""
+        }`}
+        onClick={() => selectOptionHandler(option)}
+        key={option.id}
+      >
+        {option.name}
+      </li>
+    ));
+  };
+
   return (
     <fieldset
       onClick={selectCustomizationType}
@@ -67,21 +102,10 @@ export default function VariantButton({ item }: { item: Customization }) {
         height={0}
         className="h-full w-auto"
       />
-      <ul
-        className={`flex gap-4 transition-all ${
-          isAnimating ? "animate-openoptions" : ""
-        }`}
-      >
-        {item.options && selectedCustomizationTypeId === item.id ? (
-          item.options.map((option: CustomizationOption) => (
-            <li
-              className={`transition-all whitespace-nowrap ${checkCurrentOption(option) ? "font-semibold" : ""}`}
-              onClick={() => selectOptionHandler(option)}
-              key={option.id}
-            >
-              {option.name}
-            </li>
-          ))
+      <ul className={`flex gap-4 transition-all ${animationClass}`}>
+        {item.options &&
+        (isAnimating || selectedCustomizationTypeId === item.id) ? (
+          renderOptions()
         ) : (
           <li>{item.name}</li>
         )}

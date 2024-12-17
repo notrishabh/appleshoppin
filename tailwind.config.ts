@@ -43,9 +43,15 @@ export default {
             overflow: "visible",
           },
         },
+        expandAndCollapse: {
+          "0%": { maxWidth: "34px" },
+          "50%": { maxWidth: "500px" },
+          "100%": { maxWidth: "34px" },
+        },
       },
       animation: {
         openoptions: "openoptions 1.1s ease forwards",
+        expandAndCollapse: "expandAndCollapse 1.75s ease-in-out forwards",
       },
     },
   },
