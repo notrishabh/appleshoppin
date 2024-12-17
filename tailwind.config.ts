@@ -30,6 +30,10 @@ export default {
         sfdisplay: ["var(--font-sf-display)", "sans-serif"],
       },
       keyframes: {
+        fadeIn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
         openoptions: {
           "0%": {
             maxWidth: "34px",
@@ -50,6 +54,7 @@ export default {
         },
       },
       animation: {
+        fadeIn: "fadeIn 1s ease-in-out",
         openoptions: "openoptions 1.1s ease forwards",
         expandAndCollapse: "expandAndCollapse 1.75s ease-in-out forwards",
       },

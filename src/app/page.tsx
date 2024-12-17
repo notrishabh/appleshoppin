@@ -11,7 +11,7 @@ export default function Home() {
   return (
     <section>
       <Header />
-      <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left">
+      <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left animate-fadeIn">
         <div
           className={`absolute top-[17%] ml-10 visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
             startFlow ? "opacity-0 pointer-events-none" : "opacity-100"

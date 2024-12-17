@@ -43,7 +43,9 @@ export default function SwiperCarousel({
   }, [selectedCustomizationTypeId]);
 
   return (
-    <div className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"}`}>
+    <div
+      className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"} animate-fadeIn`}
+    >
       <Swiper
         onSwiper={setSwiperInstance}
         slidesPerView={1.4}

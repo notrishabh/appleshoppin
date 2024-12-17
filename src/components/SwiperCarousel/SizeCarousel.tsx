@@ -36,7 +36,7 @@ export default function SizeCarousel() {
   }, []);
 
   return (
-    <div className="w-full flex items-center justify-center h-full">
+    <div className="w-full flex items-center justify-center h-full animate-fadeIn">
       <div className="absolute left-0 w-full">
         <div className="h-[52vh]">
           <Swiper
