@@ -1,4 +1,3 @@
-"use client";
 import useWatchStore from "@/lib/store";
 import { ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
@@ -48,6 +47,9 @@ export default function CollectionsDropdown() {
   return (
     <div className="relative flex justify-center items-center ">
       <button
+        aria-expanded={isOpen}
+        aria-controls="dropdown"
+        aria-label="Collections"
         onClick={() => setIsOpen(!isOpen)}
         className="text-[17px] tracking-tight leading-6 flex items-center gap-1 "
       >
@@ -57,6 +59,8 @@ export default function CollectionsDropdown() {
 
       {isOpen && (
         <div
+          id="dropdown"
+          role="menu"
           ref={dropdownRef}
           className="absolute top-8 w-64 md:w-80 bg-white shadow-lg rounded-2xl z-50"
         >

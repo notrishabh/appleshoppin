@@ -43,6 +43,8 @@ export default function Watch() {
   if (showSideView) {
     return (
       <Image
+        role="img"
+        aria-label="Watch side view"
         src="/main-watch-side-view.jpg"
         alt="WATCH"
         width="0"
@@ -61,11 +63,17 @@ export default function Watch() {
   return (
     <div className="w-full flex items-center justify-center h-full">
       {selectedCustomizationTypeId === 2 ? (
-        <div className="absolute left-0 w-full">
+        <div
+          role="region"
+          aria-label="Case carousel"
+          className="absolute left-0 w-full"
+        >
           <SwiperCarousel slides={cases} />
         </div>
       ) : (
         <Image
+          role="img"
+          aria-label="Selected case"
           src={selectedCase.image}
           alt={selectedCase.name}
           width="0"
@@ -75,17 +83,22 @@ export default function Watch() {
         />
       )}
       {selectedCustomizationTypeId === 3 ? (
-        <div className="absolute left-0 w-full">
+        <div
+          role="region"
+          aria-label="Band carousel"
+          className="absolute left-0 w-full"
+        >
           <SwiperCarousel slides={bands} />
         </div>
       ) : (
         <Image
+          aria-label="Selected band"
           src={selectedBand.image}
           alt={selectedBand.name}
           width="0"
           height="0"
           sizes="100vw"
-          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto transition-all duration-700 ease-in-out ${startFlow && transitionAnimate ? "translate-x-[15%] opacity-0" : "translate-x-0 opacity-100"}`}
+          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto transition-all duration-700 ease-in-out z-[-1] ${startFlow && transitionAnimate ? "translate-x-[15%] opacity-0" : "translate-x-0 opacity-100"}`}
         />
       )}
     </div>

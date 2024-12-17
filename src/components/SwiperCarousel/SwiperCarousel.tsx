@@ -44,6 +44,8 @@ export default function SwiperCarousel({
 
   return (
     <div
+      role="region"
+      aria-live="polite"
       className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"} animate-fadeIn`}
     >
       <Swiper
@@ -75,10 +77,18 @@ export default function SwiperCarousel({
             slidesPerView: 6,
           },
         }}
+        aria-live="polite"
+        role="region"
+        aria-label="Carousel"
       >
         {slides.map((slide: CustomizationVariants) => (
-          <SwiperSlide key={slide.id}>
+          <SwiperSlide
+            aria-label={slide.name}
+            aria-live="polite"
+            key={slide.id}
+          >
             <Image
+              role="img"
               src={slide.image}
               alt={slide.name}
               width="0"
@@ -86,7 +96,7 @@ export default function SwiperCarousel({
               sizes="100vw"
               loading="lazy"
             />
-            <div className="swiper-lazy-preloader"></div>
+            <div aria-hidden className="swiper-lazy-preloader"></div>
           </SwiperSlide>
         ))}
       </Swiper>

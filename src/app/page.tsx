@@ -9,15 +9,26 @@ export default function Home() {
   const { startFlow, setStartFlow } = useWatchStore();
 
   return (
-    <section>
+    <main>
       <Header />
-      <section className="w-full h-[70vh] flex justify-center items-center flex-col text-left animate-fadeIn">
+      <section
+        id="main-header"
+        className="w-full h-[70vh] flex justify-center items-center flex-col text-left animate-fadeIn"
+        role="region"
+        aria-labelledby="section-header-title"
+      >
         <div
+          id="intro-text"
+          role="contentinfo"
           className={`absolute top-[17%] ml-10 visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
             startFlow ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
-          <h1 className="flex flex-col md:text-heading text-4xl font-sfdisplay font-semibold tracking-tighest">
+          <h1
+            id="section-header-title"
+            aria-live="polite"
+            className="flex flex-col md:text-heading text-4xl font-sfdisplay font-semibold tracking-tighest"
+          >
             <span className="md:text-subtitle text-lg font-normal tracking-tighter leading-snug pb-[10px]">
               Apple Watch Studio
             </span>
@@ -26,6 +37,7 @@ export default function Home() {
             <span className="leading-none">Create your own style.</span>
           </h1>
           <button
+            aria-label="Start customizing your Apple Watch"
             onClick={() => setStartFlow(true)}
             className="bg-primary mt-11 py-2 px-[22px] min-w-[70px] text-[17px] tracking-tight rounded-full text-white hover:bg-primaryhover"
           >
@@ -39,6 +51,7 @@ export default function Home() {
         </div>
       </section>
       <section
+        aria-hidden={!startFlow}
         className={`transition-opacity duration-500 ease-in-out delay-[1500ms] pb-10 ${
           startFlow ? "opacity-100 visible " : "opacity-0 invisible"
         }`}
@@ -46,6 +59,6 @@ export default function Home() {
         <InfoSection />
         <VariantButtonGroup />
       </section>
-    </section>
+    </main>
   );
 }

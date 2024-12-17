@@ -1,4 +1,3 @@
-"use client";
 import { Customization, CustomizationOption } from "@/data/variants";
 import useWatchStore, { Variant } from "@/lib/store";
 import { findFirstVariant, getSelectedCollectionData } from "@/utils/utils";
@@ -79,6 +78,7 @@ export default function VariantButton({ item }: { item: Customization }) {
   const renderOptions = () => {
     return item.options.map((option: CustomizationOption) => (
       <li
+        aria-live="polite"
         className={`transition-all whitespace-nowrap ${
           checkCurrentOption(option) ? "font-semibold" : ""
         }`}
@@ -92,22 +92,28 @@ export default function VariantButton({ item }: { item: Customization }) {
 
   return (
     <fieldset
+      role="group"
+      aria-label={item.name}
       onClick={selectCustomizationType}
       className="flex items-end gap-2 bg-[#e8e8ed] py-3 px-6 rounded-full cursor-pointer"
     >
       <Image
+        role="img"
         src={item.image}
-        alt="product image"
+        alt={item.name}
         width={0}
         height={0}
         className="h-full w-auto"
       />
-      <ul className={`flex gap-4 transition-all ${animationClass}`}>
+      <ul
+        aria-live="polite"
+        className={`flex gap-4 transition-all ${animationClass}`}
+      >
         {item.options &&
         (isAnimating || selectedCustomizationTypeId === item.id) ? (
           renderOptions()
         ) : (
-          <li>{item.name}</li>
+          <li aria-live="polite">{item.name}</li>
         )}
       </ul>
     </fieldset>

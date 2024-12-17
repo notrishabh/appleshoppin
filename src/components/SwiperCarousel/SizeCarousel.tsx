@@ -68,9 +68,16 @@ export default function SizeCarousel() {
                 slidesPerView: 6,
               },
             }}
+            aria-live="polite"
+            role="region"
+            aria-label="Size carousel"
           >
-            <SwiperSlide className="flex items-center justify-center">
+            <SwiperSlide
+              aria-label="42mm"
+              className="flex items-center justify-center"
+            >
               <Image
+                role="img"
                 src={selectedCase.image}
                 alt={selectedCase.name}
                 width="0"
@@ -79,6 +86,7 @@ export default function SizeCarousel() {
                 className="absolute w-[45vh] max-h-[45vh] h-auto z-10"
               />
               <Image
+                role="img"
                 src={selectedBand.image}
                 alt={selectedBand.name}
                 width="0"
@@ -87,8 +95,12 @@ export default function SizeCarousel() {
                 className="w-[45vh] max-h-[45vh] h-auto"
               />
             </SwiperSlide>
-            <SwiperSlide className="flex items-center justify-center">
+            <SwiperSlide
+              aria-label="46mm"
+              className="flex items-center justify-center"
+            >
               <Image
+                role="img"
                 src={selectedCase.image}
                 alt={selectedCase.name}
                 width="0"
@@ -97,6 +109,7 @@ export default function SizeCarousel() {
                 className="absolute w-[52vh] max-w-[550px] h-auto z-10"
               />
               <Image
+                role="img"
                 src={selectedBand.image}
                 alt={selectedBand.name}
                 width="0"
