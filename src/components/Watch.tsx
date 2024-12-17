@@ -2,7 +2,7 @@ import useWatchStore from "@/lib/store";
 import Image from "next/image";
 import { getSelectedCollectionData } from "@/utils/utils";
 import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import SizeCarousel from "./SwiperCarousel/SizeCarousel";
 
 export default function Watch() {
@@ -12,12 +12,25 @@ export default function Watch() {
     selectedCustomizationTypeId,
     selectedVariant,
     selectedCollectionId,
+    startFlow,
   } = useWatchStore();
 
   const data = getSelectedCollectionData(selectedCollectionId);
-
   const cases = useMemo(() => data[1].variants, [data]);
   const bands = useMemo(() => data[2].variants, [data]);
+
+  const [transitionAnimate, setTransitionAnimate] = useState(false);
+
+  // Trigger transition on selected collection change
+  useEffect(() => {
+    setTransitionAnimate(true);
+
+    const timer = setTimeout(() => {
+      setTransitionAnimate(false);
+    }, 700); // Match the duration of the transition
+
+    return () => clearTimeout(timer);
+  }, [selectedCollectionId]);
 
   const selectedCase = useMemo(() => {
     return data[1].variants[selectedVariant.Case];
@@ -58,7 +71,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className={`absolute pointer-events-none ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10`}
+          className={`absolute pointer-events-none ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10 transition-opacity duration-200 ease-in-out ${startFlow && transitionAnimate ? "opacity-0" : "opacity-100"}`}
         />
       )}
       {selectedCustomizationTypeId === 3 ? (
@@ -72,7 +85,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto`}
+          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto transition-all duration-700 ease-in-out ${startFlow && transitionAnimate ? "translate-x-[15%] opacity-0" : "translate-x-0 opacity-100"}`}
         />
       )}
     </div>
