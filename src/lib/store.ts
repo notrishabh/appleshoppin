@@ -11,6 +11,8 @@ interface WatchStore {
   //Get started
   startFlow: boolean;
   setStartFlow: (arg0: boolean) => void;
+  selectedCollection: number;
+  setSelectedCollection: (arg0: number) => void;
 
   // Watch side view state
   showSideView: boolean;
@@ -34,6 +36,8 @@ const useWatchStore = create<WatchStore>((set, get) => ({
   // Get started
   startFlow: false,
   setStartFlow: (arg0) => set(() => ({ startFlow: arg0 })),
+  selectedCollection: 0,
+  setSelectedCollection: (arg0) => set(() => ({ selectedCollection: arg0 })),
 
   // Side view
   showSideView: false,
