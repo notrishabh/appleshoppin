@@ -1,7 +1,7 @@
 "use client";
-import data, { Customization, CustomizationOption } from "@/data/variants";
+import { Customization, CustomizationOption } from "@/data/variants";
 import useWatchStore, { Variant } from "@/lib/store";
-import { findFirstVariant } from "@/utils/utils";
+import { findFirstVariant, getSelectedCollectionData } from "@/utils/utils";
 import Image from "next/image";
 
 export default function VariantButton({ item }: { item: Customization }) {
@@ -11,7 +11,10 @@ export default function VariantButton({ item }: { item: Customization }) {
     setSelectedCustomizationId,
     selectedVariant,
     goToSlide,
+    selectedCollectionId,
   } = useWatchStore();
+
+  const data = getSelectedCollectionData(selectedCollectionId);
 
   const selectCustomizationType = () => {
     if (selectedCustomizationTypeId === item.id) return;
@@ -24,7 +27,11 @@ export default function VariantButton({ item }: { item: Customization }) {
   };
 
   const selectOptionHandler = (option: CustomizationOption) => {
-    const firstVariant = findFirstVariant(option.name, item.id);
+    const firstVariant = findFirstVariant(
+      option.name,
+      item.id,
+      selectedCollectionId,
+    );
     goToSlide(firstVariant.id - 1);
 
     setSelectedCustomizationId(option.id);

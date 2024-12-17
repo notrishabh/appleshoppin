@@ -2,21 +2,27 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import Image from "next/image";
 import { Keyboard, Navigation } from "swiper/modules";
 import { useMemo } from "react";
-import data from "@/data/variants";
 import useWatchStore, { Variant } from "@/lib/store";
 import { Swiper as SwiperCore } from "swiper";
+import { getSelectedCollectionData } from "@/utils/utils";
 
 export default function SizeCarousel() {
-  const { selectedVariant, setSelectedVariant, setSwiperInstance } =
-    useWatchStore();
+  const {
+    selectedVariant,
+    setSelectedVariant,
+    setSwiperInstance,
+    selectedCollectionId,
+  } = useWatchStore();
+
+  const data = getSelectedCollectionData(selectedCollectionId);
 
   const selectedCase = useMemo(() => {
     return data[1].variants[selectedVariant.Case];
-  }, [selectedVariant.Case]);
+  }, [selectedVariant.Case, data]);
 
   const selectedBand = useMemo(() => {
     return data[2].variants[selectedVariant.Band];
-  }, [selectedVariant.Band]);
+  }, [selectedVariant.Band, data]);
 
   const onSlideChange = (swiper: SwiperCore) => {
     const typeName = data[0].name;

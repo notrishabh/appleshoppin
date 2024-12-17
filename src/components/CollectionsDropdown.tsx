@@ -2,24 +2,10 @@
 import useWatchStore from "@/lib/store";
 import { ChevronDown } from "lucide-react";
 import { useState, useRef, useEffect } from "react";
-
-const COLLECTIONS: { id: number; name: string }[] = [
-  {
-    id: 0,
-    name: "Apple Watch Series 10",
-  },
-  {
-    id: 1,
-    name: " Apple Watch Hermès Series 10",
-  },
-  {
-    id: 2,
-    name: "Apple Watch Se",
-  },
-];
+import { COLLECTIONS } from "@/data/variants";
 
 export default function CollectionsDropdown() {
-  const { selectedCollection, setSelectedCollection } = useWatchStore();
+  const { selectedCollectionId, setSelectedCollectionId } = useWatchStore();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -41,7 +27,7 @@ export default function CollectionsDropdown() {
   };
 
   const selectCollectionHandler = (id: number) => {
-    setSelectedCollection(id);
+    setSelectedCollectionId(id);
     setIsOpen(false);
   };
 
@@ -74,12 +60,12 @@ export default function CollectionsDropdown() {
           ref={dropdownRef}
           className="absolute top-8 w-64 md:w-80 bg-white shadow-lg rounded-2xl z-50"
         >
-          <ul className="p-6 space-y-4 text-center text-gray-700">
+          <ul className="p-6 space-y-4 text-center">
             {COLLECTIONS.map((collection, index) => (
               <div key={collection.id} className="space-y-4">
                 <li
                   onClick={() => selectCollectionHandler(collection.id)}
-                  className={`hover:text-primary cursor-pointer ${selectedCollection === collection.id && "text-gray-400 pointer-events-none"}`}
+                  className={`hover:text-primary cursor-pointer ${selectedCollectionId === collection.id && "text-gray-400 pointer-events-none"}`}
                 >
                   {collection.name}
                 </li>

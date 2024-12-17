@@ -2,7 +2,12 @@ import useWatchStore from "@/lib/store";
 import { calculatePrice, getWatchFullName } from "@/utils/utils";
 
 export default function InfoSection() {
-  const { showSideView, toggleSideView, selectedVariant } = useWatchStore();
+  const {
+    showSideView,
+    toggleSideView,
+    selectedVariant,
+    selectedCollectionId,
+  } = useWatchStore();
 
   return (
     <div className="w-[60%] mx-auto text-center pt-[4vh] flex flex-col gap-2">
@@ -25,10 +30,10 @@ export default function InfoSection() {
         Apple Watch Series 10
       </span>
       <span className="font-semibold text-sm tracking-tighter">
-        {getWatchFullName(selectedVariant)}
+        {getWatchFullName(selectedVariant, selectedCollectionId)}
       </span>
       <span className="text-sm tracking-tighter">
-        From ${calculatePrice(selectedVariant)}
+        From ${calculatePrice(selectedVariant, selectedCollectionId)}
       </span>
     </div>
   );

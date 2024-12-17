@@ -12,9 +12,9 @@ import "./swiper-styles.css";
 import { Navigation, Keyboard } from "swiper/modules";
 import useWatchStore, { Variant } from "@/lib/store";
 import { CustomizationVariants } from "@/data/variants";
-import data from "@/data/variants";
 import { Swiper as SwiperCore } from "swiper";
 import { useMemo } from "react";
+import { getSelectedCollectionData } from "@/utils/utils";
 
 export default function SwiperCarousel({
   slides,
@@ -26,7 +26,10 @@ export default function SwiperCarousel({
     setSelectedVariant,
     selectedVariant,
     selectedCustomizationTypeId,
+    selectedCollectionId,
   } = useWatchStore();
+
+  const data = getSelectedCollectionData(selectedCollectionId);
 
   const onSlideChange = (swiper: SwiperCore) => {
     const typeName = data[selectedCustomizationTypeId - 1].name;

@@ -1,9 +1,8 @@
 import useWatchStore from "@/lib/store";
 import Image from "next/image";
-import { getBands, getCases } from "@/utils/utils";
+import { getSelectedCollectionData } from "@/utils/utils";
 import SwiperCarousel from "./SwiperCarousel/SwiperCarousel";
 import { useMemo } from "react";
-import data from "@/data/variants";
 import SizeCarousel from "./SwiperCarousel/SizeCarousel";
 
 export default function Watch() {
@@ -12,18 +11,21 @@ export default function Watch() {
     toggleSideView,
     selectedCustomizationTypeId,
     selectedVariant,
+    selectedCollectionId,
   } = useWatchStore();
 
-  const cases = useMemo(() => getCases(), []);
-  const bands = useMemo(() => getBands(), []);
+  const data = getSelectedCollectionData(selectedCollectionId);
+
+  const cases = useMemo(() => data[1].variants, [data]);
+  const bands = useMemo(() => data[2].variants, [data]);
 
   const selectedCase = useMemo(() => {
     return data[1].variants[selectedVariant.Case];
-  }, [selectedVariant.Case]);
+  }, [selectedVariant.Case, data]);
 
   const selectedBand = useMemo(() => {
     return data[2].variants[selectedVariant.Band];
-  }, [selectedVariant.Band]);
+  }, [selectedVariant.Band, data]);
 
   if (showSideView) {
     return (

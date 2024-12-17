@@ -7,12 +7,39 @@ export interface Variant {
   Band: number;
 }
 
+const defaultVariant = new Map<number, Variant>([
+  [
+    0,
+    {
+      Size: 1,
+      Case: 2,
+      Band: 39,
+    },
+  ],
+  [
+    1,
+    {
+      Size: 1,
+      Case: 0,
+      Band: 0,
+    },
+  ],
+  [
+    2,
+    {
+      Size: 1,
+      Case: 0,
+      Band: 0,
+    },
+  ],
+]);
+
 interface WatchStore {
   //Get started
   startFlow: boolean;
   setStartFlow: (arg0: boolean) => void;
-  selectedCollection: number;
-  setSelectedCollection: (arg0: number) => void;
+  selectedCollectionId: number;
+  setSelectedCollectionId: (arg0: number) => void;
 
   // Watch side view state
   showSideView: boolean;
@@ -36,8 +63,12 @@ const useWatchStore = create<WatchStore>((set, get) => ({
   // Get started
   startFlow: false,
   setStartFlow: (arg0) => set(() => ({ startFlow: arg0 })),
-  selectedCollection: 0,
-  setSelectedCollection: (arg0) => set(() => ({ selectedCollection: arg0 })),
+  selectedCollectionId: 0,
+  setSelectedCollectionId: (arg0) =>
+    set(() => ({
+      selectedCollectionId: arg0,
+      selectedVariant: defaultVariant.get(arg0),
+    })),
 
   // Side view
   showSideView: false,
