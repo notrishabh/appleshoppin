@@ -3,6 +3,7 @@ import { Customization, CustomizationOption } from "@/data/variants";
 import useWatchStore, { Variant } from "@/lib/store";
 import { findFirstVariant, getSelectedCollectionData } from "@/utils/utils";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export default function VariantButton({ item }: { item: Customization }) {
   const {
@@ -13,6 +14,16 @@ export default function VariantButton({ item }: { item: Customization }) {
     goToSlide,
     selectedCollectionId,
   } = useWatchStore();
+
+  const [isAnimating, setIsAnimating] = useState(false);
+
+  useEffect(() => {
+    if (selectedCustomizationTypeId === item.id) {
+      setIsAnimating(true);
+      const timer = setTimeout(() => setIsAnimating(false), 1100); // Match the animation duration
+      return () => clearTimeout(timer); // Cleanup timer on unmount or type change
+    }
+  }, [selectedCustomizationTypeId, item.id]);
 
   const data = getSelectedCollectionData(selectedCollectionId);
 
@@ -45,7 +56,7 @@ export default function VariantButton({ item }: { item: Customization }) {
   };
 
   return (
-    <div
+    <fieldset
       onClick={selectCustomizationType}
       className="flex items-end gap-2 bg-[#e8e8ed] py-3 px-6 rounded-full cursor-pointer"
     >
@@ -56,21 +67,25 @@ export default function VariantButton({ item }: { item: Customization }) {
         height={0}
         className="h-full w-auto"
       />
-      <div className="flex gap-4">
+      <ul
+        className={`flex gap-4 transition-all ${
+          isAnimating ? "animate-openoptions" : ""
+        }`}
+      >
         {item.options && selectedCustomizationTypeId === item.id ? (
           item.options.map((option: CustomizationOption) => (
-            <span
-              className={`${checkCurrentOption(option) && "font-semibold"}`}
+            <li
+              className={`transition-all whitespace-nowrap ${checkCurrentOption(option) ? "font-semibold" : ""}`}
               onClick={() => selectOptionHandler(option)}
               key={option.id}
             >
               {option.name}
-            </span>
+            </li>
           ))
         ) : (
-          <span>{item.name}</span>
+          <li>{item.name}</li>
         )}
-      </div>
-    </div>
+      </ul>
+    </fieldset>
   );
 }

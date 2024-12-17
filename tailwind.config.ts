@@ -29,6 +29,24 @@ export default {
         sftext: ["var(--font-sf-text)", "sans-serif"],
         sfdisplay: ["var(--font-sf-display)", "sans-serif"],
       },
+      keyframes: {
+        openoptions: {
+          "0%": {
+            maxWidth: "34px",
+            clipPath: "inset(0 100% 0 0)",
+            overflow: "hidden",
+          },
+          "90%": { maxWidth: "500px", clipPath: "inset(0 0 0 0)" },
+          "100%": {
+            maxWidth: "100%",
+            clipPath: "inset(0 0 0 0)",
+            overflow: "visible",
+          },
+        },
+      },
+      animation: {
+        openoptions: "openoptions 1.1s ease forwards",
+      },
     },
   },
   plugins: [],
