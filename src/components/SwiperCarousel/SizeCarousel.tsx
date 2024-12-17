@@ -38,7 +38,7 @@ export default function SizeCarousel() {
   return (
     <div className="w-full flex items-center justify-center h-full animate-fadeIn">
       <div className="absolute left-0 w-full">
-        <div className="h-[52vh]">
+        <div className="h-[45vh] md:h-[52vh]">
           <Swiper
             onSwiper={setSwiperInstance}
             slidesPerView={1.4}
@@ -83,7 +83,7 @@ export default function SizeCarousel() {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="absolute w-[45vh] max-h-[45vh] h-auto z-10"
+                className="absolute w-[35vh] md:w-[45vh] max-h-[300px] md:max-h-[45vh] h-auto z-10"
               />
               <Image
                 role="img"
@@ -92,7 +92,7 @@ export default function SizeCarousel() {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="w-[45vh] max-h-[45vh] h-auto"
+                className="w-[35vh] md:w-[45vh] max-h-[300px] md:max-h-[45vh] h-auto"
               />
             </SwiperSlide>
             <SwiperSlide
@@ -106,7 +106,7 @@ export default function SizeCarousel() {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="absolute w-[52vh] max-w-[550px] h-auto z-10"
+                className="absolute w-[45vh] md:w-[52vh] max-w-[550px] h-auto z-10"
               />
               <Image
                 role="img"
@@ -115,7 +115,7 @@ export default function SizeCarousel() {
                 width="0"
                 height="0"
                 sizes="100vw"
-                className="w-[52vh] max-w-[550px] h-auto"
+                className="w-[45vh] md:w-[52vh] max-w-[550px] h-auto"
               />
             </SwiperSlide>
           </Swiper>

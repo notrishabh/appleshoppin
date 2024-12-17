@@ -11,7 +11,7 @@ export default function InfoSection() {
   } = useWatchStore();
 
   return (
-    <div className="w-[60%] mx-auto text-center pt-[4vh] flex flex-col gap-2">
+    <div className="w-[60%] mx-auto text-center md:pt-[4vh] flex flex-col gap-2">
       {showSideView ? (
         <span
           role="button"

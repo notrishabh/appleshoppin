@@ -79,7 +79,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className={`absolute pointer-events-none ${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto z-10 transition-opacity duration-200 ease-in-out ${startFlow && transitionAnimate ? "opacity-0" : "opacity-100"}`}
+          className={`absolute pointer-events-none ${selectedVariant.Size === 0 ? "w-[35vh] md:w-[45vh]" : "w-[45vh] md:w-[52vh]"} max-w-[550px] h-auto z-10 transition-opacity duration-200 ease-in-out ${startFlow && transitionAnimate ? "opacity-0" : "opacity-100"}`}
         />
       )}
       {selectedCustomizationTypeId === 3 ? (
@@ -98,7 +98,7 @@ export default function Watch() {
           width="0"
           height="0"
           sizes="100vw"
-          className={`${selectedVariant.Size === 0 ? "w-[45vh]" : "w-[52vh]"} max-w-[550px] h-auto transition-all duration-700 ease-in-out z-[-1] ${startFlow && transitionAnimate ? "translate-x-[15%] opacity-0" : "translate-x-0 opacity-100"}`}
+          className={`${selectedVariant.Size === 0 ? "w-[35vh] md:w-[45vh]" : "w-[45vh] md:w-[52vh]"} max-w-[550px] h-auto transition-all duration-700 ease-in-out z-[-1] ${startFlow && transitionAnimate ? "translate-x-[15%] opacity-0" : "translate-x-0 opacity-100"}`}
         />
       )}
     </div>

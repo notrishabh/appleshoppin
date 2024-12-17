@@ -46,7 +46,7 @@ export default function SwiperCarousel({
     <div
       role="region"
       aria-live="polite"
-      className={`${selectedVariant.Size === 0 ? "h-[45vh]" : "h-[52vh]"} animate-fadeIn`}
+      className={`${selectedVariant.Size === 0 ? "h-[35vh] md:h-[45vh]" : "h-[45vh] md:h-[52vh]"} animate-fadeIn`}
     >
       <Swiper
         onSwiper={setSwiperInstance}
