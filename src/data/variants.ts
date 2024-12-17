@@ -30,11 +30,11 @@ export const COLLECTIONS: { id: number; name: string }[] = [
   },
   {
     id: 1,
-    name: " Apple Watch Hermès Series 10",
+    name: "Apple Watch Hermès Series 10",
   },
   {
     id: 2,
-    name: "Apple Watch Se",
+    name: "Apple Watch SE",
   },
 ];
 
