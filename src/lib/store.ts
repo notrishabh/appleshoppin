@@ -21,7 +21,7 @@ const defaultVariant = new Map<number, Variant>([
     {
       Size: 1,
       Case: 0,
-      Band: 0,
+      Band: 10,
     },
   ],
   [
