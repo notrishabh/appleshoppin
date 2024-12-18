@@ -10,6 +10,7 @@ export default function Watch() {
     showSideView,
     toggleSideView,
     selectedCustomizationTypeId,
+    selectedCustomizationId,
     selectedVariant,
     selectedCollectionId,
     startFlow,
@@ -40,12 +41,16 @@ export default function Watch() {
     return data[2].variants[selectedVariant.Band];
   }, [selectedVariant.Band, data]);
 
+  const sideViewSrc: string =
+    data[selectedCustomizationTypeId - 1]?.options[selectedCustomizationId - 1]
+      ?.sideView || "/main-watch-side-view.jpg";
+
   if (showSideView) {
     return (
       <Image
         role="img"
         aria-label="Watch side view"
-        src="/main-watch-side-view.jpg"
+        src={sideViewSrc}
         alt="WATCH"
         width="0"
         height="0"

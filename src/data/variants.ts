@@ -12,6 +12,7 @@ export interface CustomizationOption {
   id: number;
   name: string;
   default?: boolean;
+  sideView?: string;
 }
 
 // Main Variant interface
@@ -80,11 +81,13 @@ export const SERIES10: Customization[] = [
       {
         id: 1,
         name: "Aluminum",
+        sideView: "/side-view/sac.jpg",
         default: true,
       },
       {
         id: 2,
         name: "Titanium",
+        sideView: "/side-view/ntc.jpg",
       },
     ],
     variants: [
@@ -137,14 +140,19 @@ export const SERIES10: Customization[] = [
     name: "Band",
     image: "/band-icon.svg",
     options: [
-      { id: 1, name: "Stainless Steel" },
-      { id: 2, name: "Sport Loop" },
-      { id: 3, name: "Sport Band" },
-      { id: 4, name: "FineWoven" },
-      { id: 5, name: "Braided Solo Loop" },
-      { id: 6, name: "Solo Loop", default: true },
-      { id: 7, name: "Nike Sport Loop" },
-      { id: 8, name: "Nike Sport Band" },
+      { id: 1, name: "Stainless Steel", sideView: "/side-view/ss.jpg" },
+      { id: 2, name: "Sport Loop", sideView: "/side-view/spl.jpg" },
+      { id: 3, name: "Sport Band", sideView: "/side-view/sb.jpg" },
+      { id: 4, name: "FineWoven", sideView: "/side-view/fw.jpg" },
+      { id: 5, name: "Braided Solo Loop", sideView: "/side-view/bsl.jpg" },
+      {
+        id: 6,
+        name: "Solo Loop",
+        default: true,
+        sideView: "/side-view/sl.jpg",
+      },
+      { id: 7, name: "Nike Sport Loop", sideView: "/side-view/nsl.jpg" },
+      { id: 8, name: "Nike Sport Band", sideView: "/side-view/nsb.jpg" },
     ],
     variants: [
       // Stainless Steel - $50
@@ -579,6 +587,8 @@ export const HERMES: Customization[] = [
       {
         id: 1,
         name: "Titanium",
+        sideView: "/side-view/hermtc.jpg",
+        default: true,
       },
     ],
     variants: [
@@ -596,11 +606,16 @@ export const HERMES: Customization[] = [
     name: "Band",
     image: "/band-icon.svg",
     options: [
-      { id: 1, name: "Hermès Toile H" },
-      { id: 2, name: "Hermès Twill" },
-      { id: 3, name: "Hermès Torsade" },
-      { id: 4, name: "Hermès Kilim" },
-      { id: 5, name: "Hermès Grand H", default: true },
+      { id: 1, name: "Hermès Toile H", sideView: "/side-view/hermth.jpg" },
+      { id: 2, name: "Hermès Twill", sideView: "/side-view/hermtw.jpg" },
+      { id: 3, name: "Hermès Torsade", sideView: "/side-view/hermto.jpg" },
+      { id: 4, name: "Hermès Kilim", sideView: "/side-view/hermk.jpg" },
+      {
+        id: 5,
+        name: "Hermès Grand H",
+        default: true,
+        sideView: "/side-view/hermtc.jpg",
+      },
     ],
     variants: [
       {
@@ -726,6 +741,8 @@ export const SE: Customization[] = [
       {
         id: 1,
         name: "Aluminum",
+        default: true,
+        sideView: "/side-view/seac.jpg",
       },
     ],
     variants: [
@@ -757,14 +774,19 @@ export const SE: Customization[] = [
     name: "Band",
     image: "/band-icon.svg",
     options: [
-      { id: 1, name: "Stainless Steel" },
-      { id: 2, name: "Sport Loop" },
-      { id: 3, name: "Sport Band" },
-      { id: 4, name: "FineWoven" },
-      { id: 5, name: "Braided Solo Loop" },
-      { id: 6, name: "Solo Loop", default: true },
-      { id: 7, name: "Nike Sport Loop" },
-      { id: 8, name: "Nike Sport Band" },
+      { id: 1, name: "Stainless Steel", sideView: "/side-view/ss.jpg" },
+      { id: 2, name: "Sport Loop", sideView: "/side-view/spl.jpg" },
+      { id: 3, name: "Sport Band", sideView: "/side-view/sb.jpg" },
+      { id: 4, name: "FineWoven", sideView: "/side-view/fw.jpg" },
+      { id: 5, name: "Braided Solo Loop", sideView: "/side-view/bsl.jpg" },
+      {
+        id: 6,
+        name: "Solo Loop",
+        default: true,
+        sideView: "/side-view/sl.jpg",
+      },
+      { id: 7, name: "Nike Sport Loop", sideView: "/side-view/nsl.jpg" },
+      { id: 8, name: "Nike Sport Band", sideView: "/side-view/nsb.jpg" },
     ],
     variants: [
       // Stainless Steel - $50
