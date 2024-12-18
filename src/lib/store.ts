@@ -28,8 +28,8 @@ const defaultVariant = new Map<number, Variant>([
     2,
     {
       Size: 1,
-      Case: 0,
-      Band: 0,
+      Case: 2,
+      Band: 39,
     },
   ],
 ]);

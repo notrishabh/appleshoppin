@@ -2,6 +2,7 @@ import {
   Customization,
   CustomizationVariants,
   HERMES,
+  SE,
   SERIES10,
 } from "@/data/variants";
 
@@ -53,6 +54,7 @@ export const getSelectedCollectionData = (
   const collectionMap = new Map<number, Customization[]>([
     [0, SERIES10],
     [1, HERMES],
+    [2, SE],
   ]);
 
   return collectionMap.get(selectedCollectionId) || SERIES10;
