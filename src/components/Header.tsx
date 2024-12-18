@@ -2,19 +2,22 @@ import useWatchStore from "@/lib/store";
 import Image from "next/image";
 import CollectionsDropdown from "./CollectionsDropdown";
 import SaveButton from "./SaveButton";
+import Link from "next/link";
 
 export default function Header() {
   const { startFlow } = useWatchStore();
   return (
     <div className="absolute top-[29px] px-8 flex items-center justify-between w-full gap-8">
-      <Image
-        role="img"
-        aria-label="Apple Watch Logo"
-        src="/apple-watch-logo.png"
-        alt="Apple Watch logo"
-        width={90}
-        height={0}
-      />
+      <Link href="/">
+        <Image
+          role="img"
+          aria-label="Apple Watch Logo"
+          src="/apple-watch-logo.png"
+          alt="Apple Watch logo"
+          width={90}
+          height={0}
+        />
+      </Link>
       <div
         aria-live="polite"
         aria-hidden={!startFlow}

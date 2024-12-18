@@ -20,7 +20,7 @@ export default function Home() {
         <div
           id="intro-text"
           role="contentinfo"
-          className={`absolute top-[17%] ml-10 visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
+          className={`absolute top-[20%] visible z-[2] transition-opacity duration-500 ease-in-out delay-300 ${
             startFlow ? "opacity-0 pointer-events-none" : "opacity-100"
           }`}
         >
@@ -45,7 +45,7 @@ export default function Home() {
           </button>
         </div>
         <div
-          className={`transform translate-y-[50vh] scale-[1.2] md:scale-[2] mt-48  ${startFlow && "transform-none md:transform-none transition-transform duration-[1200ms] ease-in-out delay-[400ms]"}`}
+          className={`transform translate-y-[40vh] md:translate-y-[55vh] scale-[1.2] md:scale-[2] mt-48  ${startFlow && "transform-none md:transform-none transition-transform duration-[1200ms] ease-in-out delay-[400ms]"}`}
         >
           <Watch />
         </div>
